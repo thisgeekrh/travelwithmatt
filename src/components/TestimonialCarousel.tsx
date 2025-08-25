@@ -13,43 +13,51 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: "Sarah",
-    city: "Chicago, IL",
+    name: "Mason M.",
+    city: "",
     rating: 5,
-    text: "Matt made our first cruise so easy! He found us the perfect cabin and got us onboard credits we never would have known about. Highly recommend!",
-    cruise: "Caribbean Paradise"
+    text: "Matt made our first cruise experience absolutely perfect! He found us an amazing deal and walked us through every step of the process. His attention to detail and personal service exceeded our expectations.",
+    cruise: "Caribbean Cruise"
   },
   {
     id: 2,
-    name: "Mike",
-    city: "Denver, CO",
+    name: "Isreal M.",
+    city: "",
     rating: 5,
-    text: "We were overwhelmed with all the cruise options. Matt narrowed it down to 3 perfect choices and helped us pick the best one for our family.",
+    text: "Working with Matt was a game-changer for our family vacation. He took the time to understand exactly what we wanted and delivered beyond our expectations. The onboard credits he secured for us were a fantastic bonus!",
     cruise: "Alaska Adventure"
   },
   {
     id: 3,
-    name: "Jennifer",
-    city: "Atlanta, GA",
+    name: "Tyler S.",
+    city: "",
     rating: 5,
-    text: "The personal touch made all the difference. Matt answered every question quickly and helped us with dining reservations before we even boarded.",
-    cruise: "Mediterranean Dream"
+    text: "Matt's expertise in cruising is unmatched. He helped us navigate all the options and found us the perfect itinerary for our group. His ongoing support throughout our trip made everything stress-free.",
+    cruise: "Mediterranean Cruise"
   },
   {
     id: 4,
-    name: "David",
-    city: "Seattle, WA",
+    name: "Lisa S.",
+    city: "",
     rating: 5,
-    text: "Saved us over $500 compared to booking directly with the cruise line. Plus, Matt was there when we had questions during our trip.",
-    cruise: "Mexican Riviera"
+    text: "I was hesitant about booking a cruise, but Matt made the entire process so smooth and enjoyable. He answered all my questions patiently and found us incredible value. Highly recommend his services!",
+    cruise: "Bahamas Escape"
   },
   {
     id: 5,
-    name: "Lisa",
-    city: "Miami, FL",
+    name: "Mark S.",
+    city: "",
     rating: 5,
-    text: "Perfect for our group of 8! Matt handled all the coordination and got us connecting cabins. Made our family reunion cruise stress-free.",
-    cruise: "Bahamas Escape"
+    text: "Matt's personal touch and attention to detail made our cruise planning effortless. He secured us better rates than we could find anywhere else and provided excellent service from start to finish.",
+    cruise: "Mexican Riviera"
+  },
+  {
+    id: 6,
+    name: "Fran P.",
+    city: "",
+    rating: 5,
+    text: "What sets Matt apart is his genuine care for his clients. He didn't just book us a cruise - he crafted the perfect vacation experience. His knowledge and dedication are truly exceptional.",
+    cruise: "Caribbean Paradise"
   }
 ];
 
@@ -210,16 +218,16 @@ const TestimonialCarousel: React.FC = () => {
         <div className="mt-16 text-center">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="text-3xl font-bold text-ocean-600 mb-2">500+</div>
-              <div className="text-gray-600">Happy Cruisers</div>
+              <div className="text-3xl font-bold text-ocean-600 mb-2">5+ Years</div>
+              <div className="text-gray-600">Experience</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-ocean-600 mb-2">4.9/5</div>
+              <div className="text-3xl font-bold text-ocean-600 mb-2">5.0/5</div>
               <div className="text-gray-600">Average Rating</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-ocean-600 mb-2">$50K+</div>
-              <div className="text-gray-600">Total Savings</div>
+              <div className="text-3xl font-bold text-ocean-600 mb-2">Personal</div>
+              <div className="text-gray-600">Service</div>
             </div>
           </div>
         </div>
