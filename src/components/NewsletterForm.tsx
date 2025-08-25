@@ -26,17 +26,32 @@ const NewsletterForm: React.FC = () => {
     }
 
     try {
-      // Simulate form submission (replace with actual Formspree or similar)
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      setIsSuccess(true);
-      setEmail('');
-      setName('');
-      
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setIsSuccess(false);
-      }, 5000);
+      // Formspree submission
+      const response = await fetch('https://formspree.io/f/YOUR_FORMSPREE_ID', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          formType: 'newsletter',
+          message: 'Newsletter signup request'
+        }),
+      });
+
+      if (response.ok) {
+        setIsSuccess(true);
+        setEmail('');
+        setName('');
+        
+        // Reset success message after 5 seconds
+        setTimeout(() => {
+          setIsSuccess(false);
+        }, 5000);
+      } else {
+        throw new Error('Form submission failed');
+      }
     } catch (err) {
       setError('Something went wrong. Please try again.');
     } finally {
