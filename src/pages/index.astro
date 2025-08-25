@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import LogoCloud from '../components/LogoCloud.astro';
+import FeatureCards from '../components/FeatureCards.astro';
+import DestinationsCarousel from '../components/DestinationsCarousel';
+import DealGrid from '../components/DealGrid.astro';
+import TestimonialCarousel from '../components/TestimonialCarousel';
+import NewsletterForm from '../components/NewsletterForm';
+import CTAStack from '../components/CTAStack.astro';
+---
+
+<BaseLayout
+  title="Travel With Matt - Cruise Planning and Booking"
+  description="Plan your next cruise with confidence. Personal support, insider deals, and simple booking through a trusted Cruise Brothers advisor."
+  canonical="https://travelwithmatt.com/"
+>
+  <Header />
+  
+  <main>
+    <Hero />
+    <LogoCloud />
+    <FeatureCards />
+    <DestinationsCarousel client:load />
+    <DealGrid />
+    <TestimonialCarousel client:load />
+    <NewsletterForm client:load />
+    <CTAStack />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TravelAgency",
+  "name": "Travel With Matt",
+  "url": "https://travelwithmatt.com",
+  "image": "https://travelwithmatt.com/images/og-hero.jpg",
+  "description": "Independent travel advisor specializing in cruises. Personal planning, insider perks, and simple booking support.",
+  "sameAs": [
+    "https://www.facebook.com/",
+    "https://www.instagram.com/",
+    "https://www.youtube.com/"
+  ],
+  "areaServed": "US",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Cruise Bookings"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "US"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "availableLanguage": "English"
+  }
+}
+</script>

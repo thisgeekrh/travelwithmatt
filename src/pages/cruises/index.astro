@@ -1,0 +1,247 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import CTAStack from '../../components/CTAStack.astro';
+
+const destinations = [
+  {
+    name: "Caribbean",
+    description: "Crystal clear waters, white sand beaches, and tropical paradise await in the Caribbean.",
+    image: "/images/caribbean-1.jpg",
+    tags: ["Family Friendly", "Beach", "Tropical", "All-Inclusive"],
+    popularPorts: ["Miami, FL", "Port Canaveral, FL", "Tampa, FL"],
+    bestTime: "Year-round, peak Dec-Apr",
+    link: "https://bookings.cbagenttools.com/swift/cruise?advancedsearch=true&siid=1021147&lang=1"
+  },
+  {
+    name: "Alaska",
+    description: "Majestic glaciers, wildlife encounters, and breathtaking mountain scenery.",
+    image: "/images/alaska-1.jpg",
+    tags: ["Adventure", "Wildlife", "Scenic", "Nature"],
+    popularPorts: ["Seattle, WA", "Vancouver, BC", "Anchorage, AK"],
+    bestTime: "May-September",
+    link: "https://bookings.cbagenttools.com/swift/cruise?advancedsearch=true&siid=1021147&lang=1"
+  },
+  {
+    name: "Mediterranean",
+    description: "Ancient history, stunning architecture, and world-class cuisine.",
+    image: "/images/mediterranean-1.jpg",
+    tags: ["Culture", "History", "Luxury", "Food & Wine"],
+    popularPorts: ["Barcelona, Spain", "Rome, Italy", "Athens, Greece"],
+    bestTime: "April-October",
+    link: "https://bookings.cbagenttools.com/swift/cruise?advancedsearch=true&siid=1021147&lang=1"
+  },
+  {
+    name: "Mexico",
+    description: "Vibrant culture, beautiful beaches, and delicious cuisine.",
+    image: "/images/mexico-1.jpg",
+    tags: ["Culture", "Beach", "Food", "Adventure"],
+    popularPorts: ["Los Angeles, CA", "San Diego, CA", "Galveston, TX"],
+    bestTime: "October-April",
+    link: "https://bookings.cbagenttools.com/swift/cruise?advancedsearch=true&siid=1021147&lang=1"
+  },
+  {
+    name: "Bahamas",
+    description: "Pristine beaches, crystal clear waters, and endless sunshine.",
+    image: "/images/bahamas-1.jpg",
+    tags: ["Beach", "Relaxation", "Short Getaways", "Family Friendly"],
+    popularPorts: ["Port Canaveral, FL", "Miami, FL", "Fort Lauderdale, FL"],
+    bestTime: "Year-round",
+    link: "https://bookings.cbagenttools.com/swift/cruise?advancedsearch=true&siid=1021147&lang=1"
+  },
+  {
+    name: "Europe",
+    description: "Explore historic cities, charming villages, and diverse cultures.",
+    image: "/images/europe-1.jpg",
+    tags: ["Culture", "History", "Luxury", "River Cruises"],
+    popularPorts: ["Amsterdam, Netherlands", "Budapest, Hungary", "Paris, France"],
+    bestTime: "April-October",
+    link: "https://bookings.cbagenttools.com/swift/cruise?advancedsearch=true&siid=1021147&lang=1"
+  }
+];
+
+const allTags = Array.from(new Set(destinations.flatMap(d => d.tags)));
+---
+
+<BaseLayout
+  title="Featured Cruises and Destinations - Travel With Matt"
+  description="Discover amazing cruise destinations including Caribbean, Alaska, Mediterranean, Mexico, Bahamas, and Europe. Find your perfect cruise experience."
+  canonical="https://travelwithmatt.com/cruises/"
+>
+  <Header />
+  
+  <main>
+    <!-- Hero Section -->
+    <section class="py-20 bg-gradient-to-br from-ocean-50 to-accent-50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          Featured Cruises and Destinations
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          From tropical Caribbean beaches to majestic Alaskan glaciers, discover the perfect cruise destination for your next adventure.
+        </p>
+      </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="py-8 bg-white border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap gap-2 justify-center">
+          <button class="filter-btn active px-4 py-2 rounded-full text-sm font-medium bg-ocean-600 text-white">
+            All Destinations
+          </button>
+          {allTags.map(tag => (
+            <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors duration-200">
+              {tag}
+            </button>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Destinations Grid -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {destinations.map((destination) => (
+            <div class="destination-card bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden">
+              <!-- Image Placeholder -->
+              <div class="relative h-48 bg-gradient-to-br from-ocean-100 to-accent-100 flex items-center justify-center">
+                <div class="text-center">
+                  <div class="text-4xl mb-2">🌍</div>
+                  <div class="text-gray-600 font-medium">{destination.name}</div>
+                </div>
+              </div>
+
+              <!-- Content -->
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-gray-900 mb-3">
+                  {destination.name}
+                </h3>
+                
+                <p class="text-gray-600 mb-4 leading-relaxed">
+                  {destination.description}
+                </p>
+
+                <!-- Tags -->
+                <div class="flex flex-wrap gap-2 mb-4">
+                  {destination.tags.map(tag => (
+                    <span class="px-2 py-1 bg-ocean-50 text-ocean-700 text-xs font-medium rounded-full">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <!-- Details -->
+                <div class="space-y-2 mb-6 text-sm text-gray-600">
+                  <div>
+                    <span class="font-medium">Popular Ports:</span> {destination.popularPorts.join(", ")}
+                  </div>
+                  <div>
+                    <span class="font-medium">Best Time:</span> {destination.bestTime}
+                  </div>
+                </div>
+
+                <!-- CTA Button -->
+                <a
+                  href={destination.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="block w-full text-center px-6 py-3 bg-ocean-600 hover:bg-ocean-700 text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ocean-500"
+                >
+                  Explore {destination.name} Cruises
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Book With Matt -->
+    <section class="py-20 bg-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+          Why Book Your Cruise With Matt?
+        </h2>
+        <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
+          Get the same prices you find online, plus personalized service and expert advice.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-ocean-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-ocean-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Best Prices</h3>
+            <p class="text-gray-600">Same prices as booking direct, often with extra perks and onboard credits</p>
+          </div>
+
+          <div class="text-center">
+            <div class="w-16 h-16 bg-ocean-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-ocean-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Expert Advice</h3>
+            <p class="text-gray-600">Personal recommendations based on your preferences and travel style</p>
+          </div>
+
+          <div class="text-center">
+            <div class="w-16 h-16 bg-ocean-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-ocean-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 2.25a9.75 9.75 0 109.75 9.75A9.75 9.75 0 0012 2.25z" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Ongoing Support</h3>
+            <p class="text-gray-600">Available before, during, and after your cruise for questions and assistance</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <CTAStack 
+      title="Ready to Find Your Perfect Cruise?"
+      subtitle="Let me help you discover the ideal destination and cruise experience for your next vacation."
+    />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script>
+  // Simple filter functionality
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const destinationCards = document.querySelectorAll('.destination-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Remove active class from all buttons
+      filterBtns.forEach(b => b.classList.remove('active', 'bg-ocean-600', 'text-white'));
+      filterBtns.forEach(b => b.classList.add('bg-gray-100', 'text-gray-700'));
+      
+      // Add active class to clicked button
+      btn.classList.add('active', 'bg-ocean-600', 'text-white');
+      btn.classList.remove('bg-gray-100', 'text-gray-700');
+      
+      const filter = btn.textContent;
+      
+      destinationCards.forEach(card => {
+        if (filter === 'All Destinations') {
+          card.style.display = 'block';
+        } else {
+          const tags = Array.from(card.querySelectorAll('.bg-ocean-50')).map(tag => tag.textContent);
+          if (tags.includes(filter)) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        }
+      });
+    });
+  });
+</script>

@@ -1,0 +1,91 @@
+---
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  primaryCTA?: string;
+  secondaryCTA?: string;
+  primaryLink?: string;
+  secondaryLink?: string;
+}
+
+const {
+  title = "Ready to Start Your Cruise Adventure?",
+  subtitle = "Book with confidence knowing you have a travel expert on your side.",
+  primaryCTA = "Book Your Cruise",
+  secondaryCTA = "Request a Custom Quote",
+  primaryLink = "https://bookings.cbagenttools.com/swift/cruise?advancedsearch=true&siid=1021147&lang=1",
+  secondaryLink = "/contact"
+} = Astro.props;
+---
+
+<section class="py-20 bg-gradient-to-br from-navy-900 via-navy-800 to-ocean-900">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="mb-12">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+        {title}
+      </h2>
+      <p class="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
+        {subtitle}
+      </p>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md mx-auto">
+      <a
+        href={primaryLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-ocean-600 hover:bg-ocean-700 text-white font-semibold rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ocean-500"
+      >
+        {primaryCTA}
+        <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+        </svg>
+      </a>
+      
+      <a
+        href={secondaryLink}
+        class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-navy-900 font-semibold rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
+      >
+        {secondaryCTA}
+        <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+        </svg>
+      </a>
+    </div>
+
+    <!-- Trust Indicators -->
+    <div class="mt-12 pt-12 border-t border-navy-700">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-12 h-12 bg-ocean-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-ocean-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-white mb-2">Trusted Advisor</h3>
+          <p class="text-gray-400 text-sm">ARC verified travel professional</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-12 h-12 bg-ocean-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-ocean-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-white mb-2">Best Prices</h3>
+          <p class="text-gray-400 text-sm">Same prices as booking direct</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-12 h-12 bg-ocean-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-ocean-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 2.25a9.75 9.75 0 109.75 9.75A9.75 9.75 0 0012 2.25z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-white mb-2">24/7 Support</h3>
+          <p class="text-gray-400 text-sm">Personal assistance anytime</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

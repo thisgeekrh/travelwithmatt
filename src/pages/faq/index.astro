@@ -1,0 +1,216 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import CTAStack from '../../components/CTAStack.astro';
+
+const faqs = [
+  {
+    question: "What documents do I need for my cruise?",
+    answer: "You'll need a valid passport for most international cruises. For closed-loop cruises (starting and ending in the same US port), a birth certificate and government-issued photo ID may be sufficient. I'll provide specific requirements for your itinerary."
+  },
+  {
+    question: "When is the best time to book a cruise?",
+    answer: "Generally, booking 6-12 months in advance offers the best selection and prices. However, last-minute deals can be found 30-90 days before departure. I monitor prices and can help you find the optimal booking window."
+  },
+  {
+    question: "Do I need travel insurance?",
+    answer: "While not required, travel insurance is highly recommended. It covers trip cancellation, medical emergencies, lost luggage, and other unexpected issues. I can help you find the right coverage for your needs."
+  },
+  {
+    question: "What are the dining options on cruise ships?",
+    answer: "Most ships offer main dining rooms, buffets, and specialty restaurants. Many include main dining and buffet meals in your fare, while specialty restaurants typically have additional charges. I can help you understand the dining options for your specific cruise."
+  },
+  {
+    question: "Are there activities for kids on cruise ships?",
+    answer: "Yes! Most major cruise lines have excellent kids' clubs and activities for children of all ages. Programs typically start from age 3 and include supervised activities, games, crafts, and age-appropriate entertainment."
+  },
+  {
+    question: "How much should I budget for onboard expenses?",
+    answer: "Plan for gratuities ($14-18 per person per day), drinks (if not included), specialty dining, shore excursions, and souvenirs. I can help you estimate costs based on your preferences and the specific cruise line."
+  },
+  {
+    question: "What's included in my cruise fare?",
+    answer: "Typically includes your cabin, most meals, entertainment, and use of ship facilities. Not included: gratuities, alcoholic beverages, specialty dining, shore excursions, spa services, and personal expenses."
+  },
+  {
+    question: "Can I bring my own alcohol on board?",
+    answer: "Most cruise lines don't allow you to bring your own alcohol. Some allow limited wine or champagne, usually with a corkage fee. I'll provide the specific policy for your chosen cruise line."
+  },
+  {
+    question: "What about internet access on cruise ships?",
+    answer: "Most ships offer Wi-Fi packages for purchase. Speeds vary by ship and location. Some premium lines include basic internet. I can help you choose the right package for your needs."
+  },
+  {
+    question: "How do shore excursions work?",
+    answer: "You can book excursions through the cruise line (convenient but often more expensive) or independently (more flexibility and often cheaper). I can recommend trusted independent operators and help you plan your port days."
+  },
+  {
+    question: "What if I get seasick?",
+    answer: "Modern cruise ships are very stable, and many people never experience seasickness. If you're concerned, book a cabin in the middle of the ship on a lower deck. Over-the-counter medications and wristbands are also effective."
+  },
+  {
+    question: "Can I change or cancel my booking?",
+    answer: "Cancellation policies vary by cruise line and fare type. Most offer some flexibility with cancellation fees that increase closer to departure. I'll explain the specific terms for your booking and help you understand your options."
+  },
+  {
+    question: "What should I pack for my cruise?",
+    answer: "Pack comfortable clothing, swimwear, formal wear (if your cruise has formal nights), toiletries, medications, and any special items you need. I'll provide a detailed packing list based on your destination and cruise line."
+  },
+  {
+    question: "How do I choose the right cabin?",
+    answer: "Consider your budget, preferences for space and views, and sensitivity to motion. Inside cabins are most affordable, oceanview offers natural light, balconies provide private outdoor space, and suites offer maximum luxury."
+  },
+  {
+    question: "What's the difference between cruise lines?",
+    answer: "Each line has its own personality and target market. Some focus on families, others on luxury or adventure. I'll help you find the perfect match based on your preferences, budget, and travel style."
+  },
+  {
+    question: "How do I get to the cruise port?",
+    answer: "Options include driving and parking, airport transfers, ride-sharing services, or public transportation. I can help you arrange transportation and provide specific directions for your departure port."
+  }
+];
+---
+
+<BaseLayout
+  title="Frequently Asked Questions - Travel With Matt"
+  description="Get answers to common cruise questions about documentation, booking, dining, activities, and more. Expert advice from your cruise travel advisor."
+  canonical="https://travelwithmatt.com/faq/"
+>
+  <Header />
+  
+  <main>
+    <!-- Hero Section -->
+    <section class="py-20 bg-gradient-to-br from-ocean-50 to-accent-50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          Frequently Asked Questions
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          Get answers to the most common cruise questions. Can't find what you're looking for? Just ask!
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="space-y-6">
+          {faqs.map((faq, index) => (
+            <div class="faq-item bg-white border border-gray-200 rounded-lg">
+              <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-ocean-500 focus:ring-inset">
+                <span class="text-lg font-semibold text-gray-900">{faq.question}</span>
+                <svg class="faq-icon w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div class="faq-answer hidden px-6 pb-4">
+                <p class="text-gray-600 leading-relaxed">{faq.answer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            Still Have Questions?
+          </h2>
+          <p class="text-xl text-gray-600 mb-8">
+            I'm here to help! No question is too big or too small.
+          </p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div class="text-center">
+              <div class="w-16 h-16 bg-ocean-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-ocean-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">Quick Answers</h3>
+              <p class="text-gray-600">Get immediate responses to common questions</p>
+            </div>
+            
+            <div class="text-center">
+              <div class="w-16 h-16 bg-ocean-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-ocean-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">Personal Advice</h3>
+              <p class="text-gray-600">Customized recommendations for your specific needs</p>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/contact"
+              class="inline-flex items-center px-6 py-3 bg-ocean-600 hover:bg-ocean-700 text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ocean-500"
+            >
+              Contact Me
+              <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              </svg>
+            </a>
+            
+            <a
+              href="https://bookings.cbagenttools.com/swift/cruise?advancedsearch=true&siid=1021147&lang=1"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center px-6 py-3 border-2 border-ocean-600 text-ocean-600 hover:bg-ocean-600 hover:text-white font-semibold rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ocean-500"
+            >
+              Browse Cruises
+              <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <CTAStack 
+      title="Ready to Start Planning Your Cruise?"
+      subtitle="Let me help you find the perfect cruise and answer any questions you have."
+    />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script>
+  // FAQ Accordion functionality
+  const faqItems = document.querySelectorAll('.faq-item');
+  
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    const answer = item.querySelector('.faq-answer');
+    const icon = item.querySelector('.faq-icon');
+    
+    question.addEventListener('click', () => {
+      const isOpen = answer.classList.contains('hidden');
+      
+      // Close all other FAQ items
+      faqItems.forEach(otherItem => {
+        const otherAnswer = otherItem.querySelector('.faq-answer');
+        const otherIcon = otherItem.querySelector('.faq-icon');
+        otherAnswer.classList.add('hidden');
+        otherIcon.classList.remove('rotate-180');
+      });
+      
+      // Toggle current item
+      if (isOpen) {
+        answer.classList.remove('hidden');
+        icon.classList.add('rotate-180');
+      } else {
+        answer.classList.add('hidden');
+        icon.classList.remove('rotate-180');
+      }
+    });
+  });
+</script>

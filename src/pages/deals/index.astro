@@ -1,0 +1,272 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import CTAStack from '../../components/CTAStack.astro';
+
+const deals = [
+  {
+    id: 1,
+    title: "Caribbean Paradise",
+    description: "7-night Eastern Caribbean cruise with stops in St. Thomas, St. Maarten, and private island.",
+    price: "From $599",
+    originalPrice: "$899",
+    savings: "Save $300",
+    badge: "Popular",
+    badgeColor: "ocean",
+    image: "/images/deal-caribbean.jpg",
+    departure: "Miami, FL",
+    duration: "7 Nights",
+    line: "Royal Caribbean",
+    link: "https://bookings.cbagenttools.com/swift/cruise?advancedsearch=true&siid=1021147&lang=1",
+    expires: "Limited Time"
+  },
+  {
+    id: 2,
+    title: "Alaska Glacier Adventure",
+    description: "7-night Alaska cruise featuring Glacier Bay, Juneau, and Ketchikan.",
+    price: "From $799",
+    originalPrice: "$1,199",
+    savings: "Save $400",
+    badge: "Limited",
+    badgeColor: "accent",
+    image: "/images/deal-alaska.jpg",
+    departure: "Seattle, WA",
+    duration: "7 Nights",
+    line: "Norwegian",
+    link: "https://bookings.cbagenttools.com/swift/cruise?advancedsearch=true&siid=1021147&lang=1",
+    expires: "Book by Dec 31"
+  },
+  {
+    id: 3,
+    title: "Mediterranean Dream",
+    description: "10-night Mediterranean cruise visiting Italy, Greece, and Croatia.",
+    price: "From $1,299",
+    originalPrice: "$1,799",
+    savings: "Save $500",
+    badge: "New",
+    badgeColor: "ocean",
+    image: "/images/deal-mediterranean.jpg",
+    departure: "Barcelona, Spain",
+    duration: "10 Nights",
+    line: "Celebrity",
+    link: "https://bookings.cbagenttools.com/swift/cruise?advancedsearch=true&siid=1021147&lang=1",
+    expires: "Limited Availability"
+  },
+  {
+    id: 4,
+    title: "Bahamas Quick Escape",
+    description: "4-night Bahamas cruise with stops in Nassau and private island.",
+    price: "From $399",
+    originalPrice: "$599",
+    savings: "Save $200",
+    badge: "Popular",
+    badgeColor: "accent",
+    image: "/images/deal-bahamas.jpg",
+    departure: "Port Canaveral, FL",
+    duration: "4 Nights",
+    line: "Carnival",
+    link: "https://bookings.cbagenttools.com/swift/cruise?advancedsearch=true&siid=1021147&lang=1",
+    expires: "Weekend Special"
+  },
+  {
+    id: 5,
+    title: "Mexican Riviera",
+    description: "7-night Mexican Riviera cruise visiting Cabo San Lucas, Mazatlán, and Puerto Vallarta.",
+    price: "From $549",
+    originalPrice: "$799",
+    savings: "Save $250",
+    badge: "Limited",
+    badgeColor: "ocean",
+    image: "/images/deal-mexico.jpg",
+    departure: "Los Angeles, CA",
+    duration: "7 Nights",
+    line: "Princess",
+    link: "https://bookings.cbagenttools.com/swift/cruise?advancedsearch=true&siid=1021147&lang=1",
+    expires: "Last Minute Deal"
+  },
+  {
+    id: 6,
+    title: "Disney Magic",
+    description: "5-night Disney cruise to the Caribbean with character experiences and family fun.",
+    price: "From $899",
+    originalPrice: "$1,299",
+    savings: "Save $400",
+    badge: "Popular",
+    badgeColor: "accent",
+    image: "/images/deal-disney.jpg",
+    departure: "Port Canaveral, FL",
+    duration: "5 Nights",
+    line: "Disney",
+    link: "https://bookings.cbagenttools.com/swift/cruise?advancedsearch=true&siid=1021147&lang=1",
+    expires: "Family Special"
+  }
+];
+
+const getBadgeColor = (color: string) => {
+  const colors = {
+    ocean: "bg-ocean-100 text-ocean-800",
+    accent: "bg-accent-100 text-accent-800"
+  };
+  return colors[color as keyof typeof colors] || colors.ocean;
+};
+---
+
+<BaseLayout
+  title="Current Cruise Deals and Special Offers - Travel With Matt"
+  description="Find amazing cruise deals and special offers on Caribbean, Alaska, Mediterranean, and more destinations. Limited time offers with significant savings."
+  canonical="https://travelwithmatt.com/deals/"
+>
+  <Header />
+  
+  <main>
+    <!-- Hero Section -->
+    <section class="py-20 bg-gradient-to-br from-ocean-50 to-accent-50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          Current Cruise Deals
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          Limited time offers on amazing cruise experiences. Prices subject to change, availability varies.
+        </p>
+        <div class="mt-8 bg-yellow-50 border border-yellow-200 rounded-lg p-4 max-w-2xl mx-auto">
+          <p class="text-yellow-800 text-sm">
+            <strong>Note:</strong> All prices are per person, based on double occupancy. Taxes and fees additional. Offers subject to availability and may change without notice.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Deals Grid -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {deals.map((deal) => (
+            <div class="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden">
+              <!-- Image Placeholder -->
+              <div class="relative h-48 bg-gradient-to-br from-ocean-100 to-accent-100 flex items-center justify-center">
+                <div class="text-center">
+                  <div class="text-4xl mb-2">🚢</div>
+                  <div class="text-gray-600 font-medium">{deal.title}</div>
+                </div>
+                
+                <!-- Badge -->
+                <div class="absolute top-4 right-4">
+                  <span class={`px-3 py-1 rounded-full text-xs font-semibold ${getBadgeColor(deal.badgeColor)}`}>
+                    {deal.badge}
+                  </span>
+                </div>
+
+                <!-- Expires Badge -->
+                <div class="absolute top-4 left-4">
+                  <span class="px-3 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-800">
+                    {deal.expires}
+                  </span>
+                </div>
+              </div>
+
+              <!-- Content -->
+              <div class="p-6">
+                <div class="flex items-start justify-between mb-3">
+                  <h3 class="text-xl font-bold text-gray-900 group-hover:text-ocean-600 transition-colors duration-200">
+                    {deal.title}
+                  </h3>
+                </div>
+
+                <p class="text-gray-600 mb-4 line-clamp-2">
+                  {deal.description}
+                </p>
+
+                <!-- Cruise Details -->
+                <div class="grid grid-cols-2 gap-4 mb-4 text-sm text-gray-500">
+                  <div>
+                    <span class="font-medium">Departure:</span> {deal.departure}
+                  </div>
+                  <div>
+                    <span class="font-medium">Duration:</span> {deal.duration}
+                  </div>
+                  <div>
+                    <span class="font-medium">Cruise Line:</span> {deal.line}
+                  </div>
+                </div>
+
+                <!-- Pricing -->
+                <div class="flex items-center justify-between mb-6">
+                  <div>
+                    <div class="text-2xl font-bold text-gray-900">{deal.price}</div>
+                    <div class="text-sm text-gray-500 line-through">{deal.originalPrice}</div>
+                  </div>
+                  <div class="text-sm font-semibold text-accent-600 bg-accent-50 px-3 py-1 rounded-full">
+                    {deal.savings}
+                  </div>
+                </div>
+
+                <!-- CTA Button -->
+                <a
+                  href={deal.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="block w-full text-center px-6 py-3 bg-ocean-600 hover:bg-ocean-700 text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ocean-500"
+                >
+                  View Sailings
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Why These Deals Are Great -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+          Why These Deals Are Special
+        </h2>
+        <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
+          These aren't just discounted prices - they're carefully selected offers that provide exceptional value.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-ocean-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-ocean-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Real Savings</h3>
+            <p class="text-gray-600">Actual discounts, not inflated original prices</p>
+          </div>
+
+          <div class="text-center">
+            <div class="w-16 h-16 bg-ocean-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-ocean-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Verified Quality</h3>
+            <p class="text-gray-600">Only deals from trusted cruise lines and ships</p>
+          </div>
+
+          <div class="text-center">
+            <div class="w-16 h-16 bg-ocean-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-ocean-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Limited Time</h3>
+            <p class="text-gray-600">Genuine limited availability offers</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <CTAStack 
+      title="Don't Miss These Amazing Deals!"
+      subtitle="Contact me today to secure your spot and get additional perks not shown online."
+    />
+  </main>
+
+  <Footer />
+</BaseLayout>

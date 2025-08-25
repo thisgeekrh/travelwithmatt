@@ -1,0 +1,312 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import CTAStack from '../../components/CTAStack.astro';
+
+const groupTypes = [
+  {
+    title: "Family Reunions",
+    description: "Perfect for multi-generational families looking to create lasting memories together.",
+    benefits: ["Group discounts", "Connecting cabins", "Family-friendly activities", "Flexible dining"],
+    image: "/images/family-reunion.jpg"
+  },
+  {
+    title: "Corporate Retreats",
+    description: "Team building and relaxation combined in beautiful destinations around the world.",
+    benefits: ["Meeting spaces", "Team activities", "Professional development", "Networking opportunities"],
+    image: "/images/corporate-retreat.jpg"
+  },
+  {
+    title: "Wedding Groups",
+    description: "Celebrate your special day with friends and family on a beautiful cruise ship.",
+    benefits: ["Wedding packages", "Group coordination", "Special events", "Photography services"],
+    image: "/images/wedding-group.jpg"
+  }
+];
+
+const destinations = [
+  {
+    name: "Caribbean",
+    description: "Perfect for family reunions with activities for all ages",
+    groupSize: "10-50 people",
+    bestTime: "Year-round"
+  },
+  {
+    name: "Alaska",
+    description: "Ideal for corporate retreats with stunning scenery",
+    groupSize: "15-100 people", 
+    bestTime: "May-September"
+  },
+  {
+    name: "Mediterranean",
+    description: "Great for destination weddings and luxury groups",
+    groupSize: "20-200 people",
+    bestTime: "April-October"
+  }
+];
+---
+
+<BaseLayout
+  title="Group Travel and Corporate Retreats - Travel With Matt"
+  description="Plan the perfect group cruise for family reunions, corporate retreats, or destination weddings. Special group rates and coordination services available."
+  canonical="https://travelwithmatt.com/groups/"
+>
+  <Header />
+  
+  <main>
+    <!-- Hero Section -->
+    <section class="py-20 bg-gradient-to-br from-ocean-50 to-accent-50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          Group Travel Made Simple
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          From family reunions to corporate retreats, I handle all the coordination so you can focus on enjoying your time together.
+        </p>
+      </div>
+    </section>
+
+    <!-- Group Types -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Perfect for Any Group
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Whether you're planning a family reunion, corporate retreat, or destination wedding, I'll make it seamless.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {groupTypes.map((type) => (
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden">
+              <!-- Image Placeholder -->
+              <div class="h-48 bg-gradient-to-br from-ocean-100 to-accent-100 flex items-center justify-center">
+                <div class="text-center">
+                  <div class="text-4xl mb-2">👥</div>
+                  <div class="text-gray-600 font-medium">{type.title}</div>
+                </div>
+              </div>
+
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-gray-900 mb-4">{type.title}</h3>
+                <p class="text-gray-600 mb-6 leading-relaxed">{type.description}</p>
+                
+                <h4 class="font-semibold text-gray-900 mb-3">What's Included:</h4>
+                <ul class="space-y-2">
+                  {type.benefits.map((benefit) => (
+                    <li class="flex items-center text-sm text-gray-600">
+                      <svg class="w-4 h-4 text-ocean-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      {benefit}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Why Choose Group Travel?
+          </h2>
+          <p class="text-xl text-gray-600">
+            More than just a discount - group travel offers unique experiences and memories.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-white rounded-xl p-6 shadow-lg">
+            <div class="flex items-start">
+              <div class="w-12 h-12 bg-ocean-100 rounded-full flex items-center justify-center mr-4">
+                <svg class="w-6 h-6 text-ocean-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Group Discounts</h3>
+                <p class="text-gray-600">Special rates for groups of 8+ people, with additional savings for larger groups</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 shadow-lg">
+            <div class="flex items-start">
+              <div class="w-12 h-12 bg-ocean-100 rounded-full flex items-center justify-center mr-4">
+                <svg class="w-6 h-6 text-ocean-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Personal Coordination</h3>
+                <p class="text-gray-600">I handle all the logistics, payments, and special requests for your group</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 shadow-lg">
+            <div class="flex items-start">
+              <div class="w-12 h-12 bg-ocean-100 rounded-full flex items-center justify-center mr-4">
+                <svg class="w-6 h-6 text-ocean-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Group Activities</h3>
+                <p class="text-gray-600">Exclusive group events, dining arrangements, and shore excursions</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 shadow-lg">
+            <div class="flex items-start">
+              <div class="w-12 h-12 bg-ocean-100 rounded-full flex items-center justify-center mr-4">
+                <svg class="w-6 h-6 text-ocean-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Flexible Payment</h3>
+                <p class="text-gray-600">Individual payment plans and flexible booking options for your group</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Destinations -->
+    <section class="py-20 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Popular Group Destinations
+          </h2>
+          <p class="text-xl text-gray-600">
+            Destinations that work perfectly for groups of all sizes and interests.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {destinations.map((destination) => (
+            <div class="bg-gradient-to-br from-ocean-50 to-accent-50 rounded-2xl p-8 text-center">
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">{destination.name}</h3>
+              <p class="text-gray-600 mb-6">{destination.description}</p>
+              
+              <div class="space-y-3 text-sm">
+                <div class="flex justify-between">
+                  <span class="font-medium">Group Size:</span>
+                  <span class="text-gray-600">{destination.groupSize}</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="font-medium">Best Time:</span>
+                  <span class="text-gray-600">{destination.bestTime}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+          <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">
+              Get Your Group Quote
+            </h2>
+            <p class="text-xl text-gray-600">
+              Tell me about your group and I'll provide a personalized quote with special group rates.
+            </p>
+          </div>
+
+          <form class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Group Type</label>
+                <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-ocean-500 focus:border-transparent">
+                  <option>Family Reunion</option>
+                  <option>Corporate Retreat</option>
+                  <option>Wedding Group</option>
+                  <option>Friends Trip</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Group Size</label>
+                <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-ocean-500 focus:border-transparent">
+                  <option>8-15 people</option>
+                  <option>16-25 people</option>
+                  <option>26-50 people</option>
+                  <option>50+ people</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Preferred Destination</label>
+                <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-ocean-500 focus:border-transparent">
+                  <option>Caribbean</option>
+                  <option>Alaska</option>
+                  <option>Mediterranean</option>
+                  <option>Mexico</option>
+                  <option>Bahamas</option>
+                  <option>Europe</option>
+                  <option>Open to suggestions</option>
+                </select>
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Travel Dates</label>
+                <input type="text" placeholder="e.g., Summer 2025, Flexible" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-ocean-500 focus:border-transparent">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Contact Information</label>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <input type="text" placeholder="Your Name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-ocean-500 focus:border-transparent">
+                <input type="email" placeholder="Email Address" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-ocean-500 focus:border-transparent">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Additional Details</label>
+              <textarea rows="4" placeholder="Tell me about your group's interests, special requirements, or any questions you have..." class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-ocean-500 focus:border-transparent"></textarea>
+            </div>
+
+            <div class="text-center">
+              <button type="submit" class="inline-flex items-center px-8 py-4 bg-ocean-600 hover:bg-ocean-700 text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ocean-500">
+                Get My Group Quote
+                <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <CTAStack 
+      title="Ready to Plan Your Group Adventure?"
+      subtitle="Let's create an unforgettable experience for your entire group."
+    />
+  </main>
+
+  <Footer />
+</BaseLayout>
