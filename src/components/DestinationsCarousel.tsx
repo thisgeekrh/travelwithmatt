@@ -1,225 +1,195 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-interface Destination {
-  id: number;
-  name: string;
-  description: string;
-  image: string;
-  tags: string[];
-  link: string;
-}
-
-const destinations: Destination[] = [
+const destinations = [
   {
     id: 1,
-    name: "Caribbean",
-    description: "Crystal clear waters, white sand beaches, and tropical paradise await in the Caribbean.",
-    image: "/images/caribbean-1.jpg",
-    tags: ["Family Friendly", "Beach", "Tropical"],
-    link: "https://bookings.cbagenttools.com/swift/cruise?advancedsearch=true&siid=1021147&lang=1"
+    name: 'Caribbean',
+    description: 'Crystal clear waters, white sand beaches, and tropical paradise await in the Caribbean.',
+    image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+    tags: ['Beach', 'Tropical', 'Relaxation'],
+    link: 'https://bookings.cbagenttools.com/swift/cruise?advancedsearch=true&siid=1021147&lang=1'
   },
   {
     id: 2,
-    name: "Alaska",
-    description: "Majestic glaciers, wildlife encounters, and breathtaking mountain scenery.",
-    image: "/images/alaska-1.jpg",
-    tags: ["Adventure", "Wildlife", "Scenic"],
-    link: "https://bookings.cbagenttools.com/swift/cruise?advancedsearch=true&siid=1021147&lang=1"
+    name: 'Alaska',
+    description: 'Majestic glaciers, wildlife encounters, and breathtaking mountain scenery in the Last Frontier.',
+    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+    tags: ['Wildlife', 'Glaciers', 'Adventure'],
+    link: 'https://bookings.cbagenttools.com/swift/cruise?advancedsearch=true&siid=1021147&lang=1'
   },
   {
     id: 3,
-    name: "Mediterranean",
-    description: "Ancient history, stunning architecture, and world-class cuisine.",
-    image: "/images/mediterranean-1.jpg",
-    tags: ["Culture", "History", "Luxury"],
-    link: "https://bookings.cbagenttools.com/swift/cruise?advancedsearch=true&siid=1021147&lang=1"
+    name: 'Mediterranean',
+    description: 'Ancient ruins, charming coastal towns, and rich cultural experiences across Europe.',
+    image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+    tags: ['Culture', 'History', 'Food'],
+    link: 'https://bookings.cbagenttools.com/swift/cruise?advancedsearch=true&siid=1021147&lang=1'
   },
   {
     id: 4,
-    name: "Mexico",
-    description: "Vibrant culture, beautiful beaches, and delicious cuisine.",
-    image: "/images/mexico-1.jpg",
-    tags: ["Culture", "Beach", "Food"],
-    link: "https://bookings.cbagenttools.com/swift/cruise?advancedsearch=true&siid=1021147&lang=1"
+    name: 'Mexico',
+    description: 'Vibrant culture, beautiful beaches, and ancient Mayan ruins along the Mexican coast.',
+    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+    tags: ['Beach', 'Culture', 'Adventure'],
+    link: 'https://bookings.cbagenttools.com/swift/cruise?advancedsearch=true&siid=1021147&lang=1'
   },
   {
     id: 5,
-    name: "Bahamas",
-    description: "Pristine beaches, crystal clear waters, and endless sunshine.",
-    image: "/images/bahamas-1.jpg",
-    tags: ["Beach", "Relaxation", "Short Getaways"],
-    link: "https://bookings.cbagenttools.com/swift/cruise?advancedsearch=true&siid=1021147&lang=1"
+    name: 'Bahamas',
+    description: 'Pristine beaches, crystal-clear waters, and endless sunshine in the Bahamas.',
+    image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+    tags: ['Beach', 'Relaxation', 'Water Sports'],
+    link: 'https://bookings.cbagenttools.com/swift/cruise?advancedsearch=true&siid=1021147&lang=1'
   }
 ];
 
 const DestinationsCarousel: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setDirection(1);
+    if (!isAutoPlaying) return;
+
+    const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % destinations.length);
     }, 5000);
 
-    return () => clearInterval(timer);
-  }, []);
+    return () => clearInterval(interval);
+  }, [isAutoPlaying]);
 
-  const slideVariants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? 1000 : -1000,
-      opacity: 0
-    }),
-    center: {
-      zIndex: 1,
-      x: 0,
-      opacity: 1
-    },
-    exit: (direction: number) => ({
-      zIndex: 0,
-      x: direction < 0 ? 1000 : -1000,
-      opacity: 0
-    })
+  const goToSlide = (index: number) => {
+    setCurrentIndex(index);
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 10000);
   };
 
-  const swipeConfidenceThreshold = 10000;
-  const swipePower = (offset: number, velocity: number) => {
-    return Math.abs(offset) * velocity;
+  const goToPrevious = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + destinations.length) % destinations.length);
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 10000);
   };
 
-  const paginate = (newDirection: number) => {
-    setDirection(newDirection);
-    setCurrentIndex((prevIndex) => (prevIndex + newDirection + destinations.length) % destinations.length);
+  const goToNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % destinations.length);
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 10000);
   };
-
-  const currentDestination = destinations[currentIndex];
 
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+    <section className="py-16 bg-gray-50">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
             Featured Destinations
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Discover amazing destinations and find your perfect cruise experience.
+            Discover amazing cruise destinations that will create memories to last a lifetime
           </p>
         </div>
 
-        <div className="relative">
+        <div className="relative max-w-6xl mx-auto">
           {/* Carousel Container */}
-          <div className="relative h-96 md:h-[500px] overflow-hidden rounded-2xl">
-            <AnimatePresence initial={false} custom={direction}>
+          <div className="relative h-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
+            <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
-                custom={direction}
-                variants={slideVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{
-                  x: { type: "spring", stiffness: 300, damping: 30 },
-                  opacity: { duration: 0.2 }
-                }}
-                drag="x"
-                dragConstraints={{ left: 0, right: 0 }}
-                dragElastic={1}
-                onDragEnd={(e, { offset, velocity }) => {
-                  const swipe = swipePower(offset.x, velocity.x);
-
-                  if (swipe < -swipeConfidenceThreshold) {
-                    paginate(1);
-                  } else if (swipe > swipeConfidenceThreshold) {
-                    paginate(-1);
-                  }
-                }}
-                className="absolute w-full h-full"
+                initial={{ opacity: 0, scale: 1.1 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.5 }}
+                className="absolute inset-0"
               >
-                <div className="relative w-full h-full">
-                  {/* Background Image */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-navy-900/60 to-navy-900/40">
-                    <div className="w-full h-full bg-gray-300 flex items-center justify-center">
-                      <span className="text-gray-500 text-lg">{currentDestination.name}</span>
+                <img
+                  src={destinations[currentIndex].image}
+                  alt={destinations[currentIndex].name}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                
+                {/* Content Overlay */}
+                <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+                  <div className="max-w-2xl">
+                    <h3 className="text-3xl lg:text-4xl font-bold mb-4">
+                      {destinations[currentIndex].name}
+                    </h3>
+                    <p className="text-lg lg:text-xl mb-6 text-gray-200">
+                      {destinations[currentIndex].description}
+                    </p>
+                    
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {destinations[currentIndex].tags.map((tag, index) => (
+                        <span
+                          key={index}
+                          className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium"
+                        >
+                          {tag}
+                        </span>
+                      ))}
                     </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="relative z-10 flex items-center justify-center h-full">
-                    <div className="text-center text-white max-w-2xl mx-auto px-6">
-                      <h3 className="text-4xl md:text-5xl font-bold mb-4">
-                        {currentDestination.name}
-                      </h3>
-                      <p className="text-xl md:text-2xl mb-6 text-gray-200">
-                        {currentDestination.description}
-                      </p>
-                      
-                      {/* Tags */}
-                      <div className="flex flex-wrap justify-center gap-2 mb-8">
-                        {currentDestination.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-
-                      <a
-                        href={currentDestination.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center px-8 py-4 bg-ocean-600 hover:bg-ocean-700 text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ocean-500"
-                      >
-                        Explore {currentDestination.name} Cruises
-                        <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                        </svg>
-                      </a>
-                    </div>
+                    
+                    <a
+                      href={destinations[currentIndex].link}
+                      className="inline-flex items-center bg-accent-500 hover:bg-accent-600 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105"
+                    >
+                      Explore {destinations[currentIndex].name}
+                      <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </a>
                   </div>
                 </div>
               </motion.div>
             </AnimatePresence>
           </div>
 
-          {/* Navigation Dots */}
-          <div className="flex justify-center mt-8 space-x-2">
+          {/* Navigation Arrows */}
+          <button
+            onClick={goToPrevious}
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-3 rounded-full transition-all duration-300"
+          >
+            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          
+          <button
+            onClick={goToNext}
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-3 rounded-full transition-all duration-300"
+          >
+            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          {/* Dots Indicator */}
+          <div className="flex justify-center mt-6 space-x-2">
             {destinations.map((_, index) => (
               <button
                 key={index}
-                onClick={() => {
-                  setDirection(index > currentIndex ? 1 : -1);
-                  setCurrentIndex(index);
-                }}
-                className={`w-3 h-3 rounded-full transition-colors duration-200 ${
-                  index === currentIndex ? 'bg-ocean-600' : 'bg-gray-300 hover:bg-gray-400'
+                onClick={() => goToSlide(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentIndex ? 'bg-accent-500' : 'bg-gray-300 hover:bg-gray-400'
                 }`}
-                aria-label={`Go to slide ${index + 1}`}
               />
             ))}
           </div>
 
-          {/* Arrow Navigation */}
+          {/* Play/Pause Button */}
           <button
-            onClick={() => paginate(-1)}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ocean-500"
-            aria-label="Previous destination"
+            onClick={() => setIsAutoPlaying(!isAutoPlaying)}
+            className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-2 rounded-full transition-all duration-300"
           >
-            <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-
-          <button
-            onClick={() => paginate(1)}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ocean-500"
-            aria-label="Next destination"
-          >
-            <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-            </svg>
+            {isAutoPlaying ? (
+              <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
+              </svg>
+            ) : (
+              <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            )}
           </button>
         </div>
       </div>

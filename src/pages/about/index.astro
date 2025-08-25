@@ -3,220 +3,212 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import CTAStack from '../../components/CTAStack.astro';
-
-const steps = [
-  {
-    number: "01",
-    title: "Tell Me Your Dreams",
-    description: "Share your travel dates, budget, and what you're looking for in a cruise experience.",
-    icon: "chat-bubble-left-right"
-  },
-  {
-    number: "02", 
-    title: "I Find Your Options",
-    description: "I research and present you with 2-3 perfect cruise options that match your criteria.",
-    icon: "magnifying-glass"
-  },
-  {
-    number: "03",
-    title: "Book & Relax",
-    description: "Once you choose, I handle the booking and provide support before, during, and after your cruise.",
-    icon: "check-circle"
-  }
-];
+import Seo from '../../components/Seo.astro';
 ---
 
-<BaseLayout
-  title="About Matt - Cruise Travel Advisor"
-  description="Hi, I am Matt. I help people cruise smarter. Independent travel advisor with Cruise Brothers specializing in personal cruise planning and booking."
-  canonical="https://travelwithmatt.com/about/"
+<BaseLayout 
+  title="About Matt - Your Trusted Cruise Travel Specialist | Travel With Matt"
+  description="Meet Matt Stratton, your dedicated cruise travel specialist with 5+ years of experience. From Caribbean getaways to Alaskan adventures, Matt helps you find the perfect cruise with insider deals and personalized service."
+  canonical="/about/"
 >
+  <Seo 
+    title="About Matt - Your Trusted Cruise Travel Specialist"
+    description="Meet Matt Stratton, your dedicated cruise travel specialist with 5+ years of experience. From Caribbean getaways to Alaskan adventures, Matt helps you find the perfect cruise with insider deals and personalized service."
+    canonical="/about/"
+    type="website"
+  />
+  
   <Header />
   
-  <main>
-    <!-- Hero Section -->
-    <section class="py-20 bg-gradient-to-br from-ocean-50 to-accent-50">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Hi, I am Matt. I help people cruise smarter.
-          </h1>
-          <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            I work as an independent travel advisor with Cruise Brothers. I focus on clear communication, real value, and easy planning. You still get the prices you expect, plus support from me before and after you sail.
-          </p>
-        </div>
-
-        <!-- Profile Section -->
-        <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16">
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-            <div class="text-center md:text-left">
-              <div class="w-32 h-32 bg-gradient-to-br from-ocean-500 to-ocean-700 rounded-full flex items-center justify-center mx-auto md:mx-0 mb-6">
-                <span class="text-white text-4xl font-bold">M</span>
-              </div>
-            </div>
-            <div class="md:col-span-2">
-              <h2 class="text-2xl font-bold text-gray-900 mb-4">Why I Love What I Do</h2>
-              <p class="text-gray-600 mb-6 leading-relaxed">
-                I've been helping families and couples plan their dream cruises for over 5 years. There's nothing better than hearing from clients after they return from an amazing trip, knowing I played a part in making it happen.
-              </p>
-              <p class="text-gray-600 leading-relaxed">
-                My approach is simple: I listen to what you want, find the best options that fit your budget, and make the booking process as smooth as possible. No pressure, no hidden fees, just honest advice from someone who genuinely cares about your vacation experience.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Credibility Badges -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          <div class="bg-white rounded-xl p-6 text-center shadow-lg">
-            <div class="w-12 h-12 bg-ocean-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg class="w-6 h-6 text-ocean-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg>
-            </div>
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">ARC Verified</h3>
-            <p class="text-gray-600 text-sm">Authorized travel agent with industry credentials</p>
-          </div>
-          
-          <div class="bg-white rounded-xl p-6 text-center shadow-lg">
-            <div class="w-12 h-12 bg-ocean-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg class="w-6 h-6 text-ocean-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">5+ Years Experience</h3>
-            <p class="text-gray-600 text-sm">Helping hundreds of families plan perfect cruises</p>
-          </div>
-          
-          <div class="bg-white rounded-xl p-6 text-center shadow-lg">
-            <div class="w-12 h-12 bg-ocean-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg class="w-6 h-6 text-ocean-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-              </svg>
-            </div>
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">Personal Touch</h3>
-            <p class="text-gray-600 text-sm">Direct communication and ongoing support</p>
-          </div>
-        </div>
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-primary-900 via-primary-800 to-ocean-700 text-white py-20 lg:py-32">
+    <div class="absolute inset-0 bg-black/20"></div>
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl lg:text-6xl font-bold mb-6">
+          Meet Your Cruise Travel Specialist
+        </h1>
+        <p class="text-xl lg:text-2xl text-primary-100 mb-8">
+          Hi, I'm Matt Stratton. I help people find their perfect cruise vacation with insider deals and personalized service.
+        </p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- How It Works -->
-    <section class="py-20 bg-white">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            How It Works
-          </h2>
-          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-            Simple, transparent, and personalized. Here's how we'll plan your perfect cruise together.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {steps.map((step, index) => (
-            <div class="relative">
-              <div class="bg-gradient-to-br from-ocean-50 to-accent-50 rounded-2xl p-8 h-full">
-                <div class="flex items-center mb-6">
-                  <div class="w-12 h-12 bg-ocean-600 text-white rounded-full flex items-center justify-center font-bold text-lg mr-4">
-                    {step.number}
-                  </div>
-                  <h3 class="text-xl font-semibold text-gray-900">{step.title}</h3>
-                </div>
-                <p class="text-gray-600 leading-relaxed">{step.description}</p>
-              </div>
+  <!-- About Matt Section -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <!-- Matt's Photo -->
+          <div class="relative">
+            <div class="aspect-square rounded-2xl overflow-hidden shadow-2xl">
+              <img 
+                src="/images/matt-headshot.jpg" 
+                alt="Matt Stratton - Cruise Travel Specialist" 
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div class="absolute -bottom-6 -right-6 bg-accent-500 text-white px-6 py-3 rounded-full shadow-lg">
+              <span class="font-semibold">5+ Years Experience</span>
+            </div>
+          </div>
+          
+          <!-- Matt's Bio -->
+          <div class="space-y-6">
+            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+              Your Personal Cruise Expert
+            </h2>
+            
+            <div class="prose prose-lg text-gray-700 space-y-4">
+              <p>
+                Matt Stratton is a dedicated cruise travel specialist with five years of experience helping families, couples, and groups find their perfect ocean adventure. With a background in software engineering and higher education, Matt brings an analytical approach and passion for teaching to every cruise booking.
+              </p>
               
-              {index < steps.length - 1 && (
-                <div class="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2">
-                  <svg class="w-8 h-8 text-ocean-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- What You Get -->
-    <section class="py-20 bg-gray-50">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            What You Get When You Book With Me
-          </h2>
-          <p class="text-xl text-gray-600">
-            More than just a booking - you get a travel partner.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div class="bg-white rounded-xl p-6 shadow-lg">
-            <div class="flex items-start">
-              <div class="w-8 h-8 bg-ocean-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                <svg class="w-4 h-4 text-ocean-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-semibold text-gray-900 mb-2">Personal Consultation</h3>
-                <p class="text-gray-600 text-sm">One-on-one planning session to understand your needs</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="bg-white rounded-xl p-6 shadow-lg">
-            <div class="flex items-start">
-              <div class="w-8 h-8 bg-ocean-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                <svg class="w-4 h-4 text-ocean-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-semibold text-gray-900 mb-2">Best Price Guarantee</h3>
-                <p class="text-gray-600 text-sm">Same prices as booking direct, often with extra perks</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="bg-white rounded-xl p-6 shadow-lg">
-            <div class="flex items-start">
-              <div class="w-8 h-8 bg-ocean-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                <svg class="w-4 h-4 text-ocean-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-semibold text-gray-900 mb-2">Pre-Cruise Support</h3>
-                <p class="text-gray-600 text-sm">Help with dining reservations, excursions, and documentation</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="bg-white rounded-xl p-6 shadow-lg">
-            <div class="flex items-start">
-              <div class="w-8 h-8 bg-ocean-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                <svg class="w-4 h-4 text-ocean-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-semibold text-gray-900 mb-2">During Your Trip</h3>
-                <p class="text-gray-600 text-sm">Available for questions and support while you're cruising</p>
-              </div>
+              <p>
+                Matt joined the cruise industry because he loves connecting people with incredible travel experiences. Whether you're a first-time cruiser or a seasoned traveler, he guides you through the entire process with clarity and care—from choosing the perfect itinerary to securing the best deals and ensuring smooth sailing.
+              </p>
+              
+              <p>
+                His approach is relatable, fun, and totally nerdy, whether he's explaining cruise line differences in simple terms or exploring the latest ship technology and amenities. Matt believes everyone deserves to experience the magic of cruising, and he's here to make that happen.
+              </p>
+              
+              <p>
+                When he's not helping clients plan their dream vacations, Matt enjoys traveling in search of amazing local cuisine, spending time with his two dogs—one lazy and one high energy—and his amazing daughter who keeps him on his toes.
+              </p>
+              
+              <p>
+                If you're looking for a cruise specialist who combines insider knowledge, genuine care, and proven professionalism, reach out to Matt and let him help you set sail with confidence.
+              </p>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- CTA Section -->
-    <CTAStack 
-      title="Ready to Plan Your Dream Cruise?"
-      subtitle="Let's work together to create the perfect vacation experience for you and your family."
-    />
-  </main>
+  <!-- Credibility Badges -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">
+          Why Trust Matt With Your Cruise?
+        </h2>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-primary-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">ARC Verified</h3>
+            <p class="text-gray-600">Official travel agent with industry credentials and training</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="w-16 h-16 bg-primary-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">5+ Years Experience</h3>
+            <p class="text-gray-600">Helped hundreds of families find their perfect cruise</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="w-16 h-16 bg-primary-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Personal Touch</h3>
+            <p class="text-gray-600">One-on-one service from booking to disembarkation</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- How It Works -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl lg:text-4xl font-bold text-center text-gray-900 mb-12">
+          How It Works
+        </h2>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="w-20 h-20 bg-accent-500 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold text-white">
+              1
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Tell Me Your Dreams</h3>
+            <p class="text-gray-600">Share your ideal cruise experience, budget, and travel dates. I'll listen and ask the right questions to understand exactly what you're looking for.</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="w-20 h-20 bg-accent-500 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold text-white">
+              2
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">I Find Your Perfect Match</h3>
+            <p class="text-gray-600">Using my insider knowledge and access to exclusive deals, I'll present you with the best cruise options that match your preferences and budget.</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="w-20 h-20 bg-accent-500 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold text-white">
+              3
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">You Sail Away Happy</h3>
+            <p class="text-gray-600">I handle all the details, secure your booking, and provide support throughout your journey. You just pack your bags and enjoy the adventure!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What You Get -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl lg:text-4xl font-bold text-center text-gray-900 mb-12">
+          What You Get When You Book With Matt
+        </h2>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-white p-6 rounded-xl shadow-lg">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">💰 Best Price Guarantee</h3>
+            <p class="text-gray-600">I have access to exclusive rates and deals that aren't available to the public. If you find a better price elsewhere, I'll match it or beat it.</p>
+          </div>
+          
+          <div class="bg-white p-6 rounded-xl shadow-lg">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">🎯 Personalized Recommendations</h3>
+            <p class="text-gray-600">Based on your preferences, I'll recommend the perfect cruise line, ship, and itinerary for your travel style and budget.</p>
+          </div>
+          
+          <div class="bg-white p-6 rounded-xl shadow-lg">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">📞 24/7 Support</h3>
+            <p class="text-gray-600">From the moment you book until you return home, I'm here to answer questions and help with any issues that arise.</p>
+          </div>
+          
+          <div class="bg-white p-6 rounded-xl shadow-lg">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">🎁 Exclusive Perks</h3>
+            <p class="text-gray-600">Enjoy onboard credits, free upgrades, and special amenities that come with booking through a trusted travel specialist.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTAStack 
+    title="Ready to Start Your Cruise Adventure?"
+    subtitle="Let me help you find the perfect cruise at the best price"
+    primaryCTA="Book Your Cruise"
+    secondaryCTA="Get a Custom Quote"
+    primaryLink="https://bookings.cbagenttools.com/swift/cruise?advancedsearch=true&siid=1021147&lang=1"
+    secondaryLink="/contact/"
+  />
+  
   <Footer />
 </BaseLayout>
